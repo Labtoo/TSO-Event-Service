@@ -1,0 +1,23 @@
+.logo-section {
+    display: flex;
+    background-color: #c9b2ba;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
+
+    h1 {
+        //background-color: #fce4ec;
+        text-align: center;
+        align-self: center;
+    }
+
+    img {
+    }
+}
+
+.mat-tab-link {
+    color: #000000;
+}
+
+.mat-ink-bar {
+    //background-color: #fce4ec;
+}

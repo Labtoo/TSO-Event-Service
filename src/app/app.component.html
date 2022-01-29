@@ -1,0 +1,24 @@
+<router-outlet></router-outlet>
+<section class="logo-section">
+    <h1>TSO Ивент Сервис</h1>
+    <div><img src="../assets/images/logo.png"></div>
+</section>
+
+
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link (click)="showState('newyear')" disabled>Новый год</a>
+    <a mat-tab-link [active]="true" (click)="showState('valentine')" active>День Св. Валентина</a>
+    <a mat-tab-link disabled>Пасха</a>
+    <a mat-tab-link disabled>Летний ивент</a>
+    <a mat-tab-link disabled>Годовщина</a>
+    <a mat-tab-link disabled>Хелоуин</a>
+</nav>
+
+
+<app-top-menu></app-top-menu>
+<app-static-content></app-static-content>
+<app-current-time></app-current-time>
+<app-resource-fileds-list *ngIf="showValentinesDay"></app-resource-fileds-list>
+<app-adventures-list></app-adventures-list>
+

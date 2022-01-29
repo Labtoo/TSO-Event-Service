@@ -1,0 +1,33 @@
+<div class="{{class}}_container">
+	<div class="{{class}}_img">
+		<h3>Ферма #{{needToAddObject.ID}}</h3>
+		<img src="../../assets/images/ValentinesDay/flower_farm.png">
+	</div>
+	<form [formGroup]="resourceForm">
+		<div class="{{class}}_inputs">
+			<div class="{{class}}_farm-now">
+				<mat-form-field>
+					<mat-label>На ферме сейчас</mat-label>
+					<input matInput type="number" formControlName="fieldValueInput">
+				</mat-form-field>
+			</div>
+			<div>
+				<mat-form-field>
+					<mat-label>Доп. время, сек</mat-label>
+					<input matInput type="number" 
+						formControlName="fieldDistanceInput"
+						placeholder="Дистанция">
+					<mat-icon matSuffix>schedule</mat-icon>
+					<mat-hint align="start">Суммарное дополнительное к основному циклу время</mat-hint>
+				</mat-form-field>
+			</div>
+		</div>
+		<div>
+			Осталось добавить: 
+			<img src="../../assets/images/ValentinesDay/addflower.png">
+			{{needToAddValue}}	
+		</div>
+	</form>
+</div>
+
+

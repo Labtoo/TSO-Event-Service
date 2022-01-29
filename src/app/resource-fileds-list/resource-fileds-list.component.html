@@ -1,0 +1,41 @@
+<section class="{{class}}_section">
+    <div class="{{class}}_container">
+        <div class="{{class}}_fields">
+            <app-resources-fields [fieldForm]="Field"
+                *ngFor="let Field of fieldsArray"
+                (needToAdd)="takeOutput($event)">
+            </app-resources-fields>
+        </div>
+        <div class="{{class}}_overal-stats">
+            <h2>Итоговые результаты</h2>
+            <form [formGroup]="overalForm">
+                <div>
+                    <div>
+                        <label>Баф x</label>
+                        <select formControlName="groupMultiplier">
+                            <option *ngFor="let groupMultiplier of multiplier" 
+                                    [ngValue]="groupMultiplier">
+                                    {{groupMultiplier}}
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <img src="../../assets/images/pud.png">
+                        <mat-slide-toggle formControlName="groupPudChecker">ПУД
+                        </mat-slide-toggle>
+                    </div>
+                </div>
+                <div>
+                    За ивент всего будет добыто: 860
+                    <img src="../../assets/images/ValentinesDay/flower.png">
+                    (не работает)
+                </div>
+                <div>
+                    Всего надо добавить: 
+                    <img src="../../assets/images/ValentinesDay/addflower.png">
+                    {{overalNeedToAdd}}   
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,27 @@
+.resources-fields-list {
+    &_section {
+        display: flex;
+        width: 100%;
+        padding: 10px 40px;
+        justify-content:center;
+    }
+
+    &_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    &_fields {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        //justify-content: space-between;
+    }
+
+    &_overal-stats {
+        padding: 10px;
+        background: #f8f8f8;
+    }
+
+}
