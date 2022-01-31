@@ -15,13 +15,13 @@ export class CurrentTimeComponent implements OnInit {
   class: string = 'timer';
   currentTime:number = 0;
   endOfEventTime:number = 0;
-  timeLeft:string = '';
 
   seconds: number = 0;
-  minutes: number = 0;
-  hours: number = 0;
+  minutes: string = '0';
+  hours: string = '0';
   days: number = 0;
   weeks: number = 0;
+  isZero: boolean;
 
   constructor(private mainService: MainService) { }
 
@@ -30,13 +30,21 @@ export class CurrentTimeComponent implements OnInit {
     //this.timeLeft = this.mainService.getTimeToEndOfEvent();
     //this.endOfEventTime = this.mainService.
     this.assignTimeUnits();
-    this.timeLeft = `${this.days} ${this.hours}:${this.minutes}`;
   }
 
   assignTimeUnits() {
     this.seconds = this.mainService.getTimeLeft('ValentinesDay') / 1000;
-    this.minutes = Math.floor(this.seconds / 60 % 60);
-    this.hours = Math.floor(this.seconds / 3600 % 24);
+    this.minutes = '' + Math.floor(this.seconds / 60 % 60);
+    this.hours = '' + Math.floor(this.seconds / 3600 % 24);
     this.days = Math.floor(this.seconds / 86400);
+    this.minutes = this.checkTimeUnitLength(this.minutes);
+    this.hours = this.checkTimeUnitLength(this.hours);
+  }
+
+  checkTimeUnitLength (unit: string): string {
+    if (unit.length < 2) {
+      return unit = '0' + unit;
+    }
+    return unit;
   }
 }
