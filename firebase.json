@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/tso-event-service",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

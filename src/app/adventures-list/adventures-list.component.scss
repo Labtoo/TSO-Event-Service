@@ -1,57 +1,124 @@
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
 .adventures-list {
-    &_section {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 10px 40px;
-        justify-content:center;
+  &_pre-table {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &_overal {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin: 5px;
     }
+
+    h2 {
+      margin: 0;
+    }
+
+    span {
+      padding: 4px 6px 3px 6px;
+      border-radius: 5px;
+      font-weight: 500;
+      color: #efefef;
+      background-color: #424242;
+    }
+  }
+
+  &_table-wrapper {
+    display: grid; 
+    grid-template-columns: 1.5fr 0.5fr; 
+    grid-template-rows: 30px 1fr; 
+    grid-auto-flow: row;
+    gap: 5px 0; 
+    justify-content: center; 
+    justify-items: center;
+    margin: auto;
+  }
+
+  &_buffs {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    background-color: #424242;
+    width: 100%;
+    align-items: center;
+    //justify-content: center;
+  }
+
+  &_buff {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px;
+
+    span {
+      color:#efefef;
+    }
+
+    img {
+      height: 43px;
+    }
+  }
+
+  &_table {
+    //width: 100%;
+  }
+
+  &_guides-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &_guide-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+
+    img {
+      margin-left: .5rem;
+    }
+  }
+}
+
+:host ::ng-deep .mat-slide-toggle-content {
+  color:#efefef;
 }
 
 table {
-    width: 100%;
-  }
-  
-  tr.example-detail-row {
-    height: 0;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):hover {
-    background: rgb(100, 100, 100);
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-  }
-  
-  .example-element-row td {
-    border-bottom-width: 0;
-  }
-  
-  .example-element-detail {
-    overflow: hidden;
-    display: flex;
-  }
-  
-  .example-element-diagram {
-    min-width: 80px;
-    border: 2px solid black;
-    padding: 8px;
-    font-weight: lighter;
-    margin: 8px 0;
-    height: 104px;
-  }
-  
-  .example-element-symbol {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
-  }
-  
-  .example-element-description {
-    padding: 16px;
-  }
-  
-  .example-element-description-attribution {
-    opacity: 0.5;
-  }
+  width: 100%;
+}
+
+.mat-column-icon {
+  width: 100px;
+  padding-top: 5px;
+}
+
+.mat-column-name {
+  width: 150px;
+  border-right: 1px solid currentColor;
+}
+
+.mat-column-loot,
+.mat-column-needToFinish {
+  width: 150px;
+  text-align: center;
+  justify-content: center;
+}
+
+.mat-column-needToFinish {
+  border-right: 1px solid currentColor;
+}
+
+.mat-column-guide {
+  padding-left: 1rem;
+  border-right: 1px solid currentColor;
+}
+

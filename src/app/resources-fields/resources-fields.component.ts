@@ -18,9 +18,14 @@ export class ResourcesFieldsComponent implements OnInit {
   public class: string = "resources-fields";
   public value: number = 0;
   public cycleInSeconds: number = 0;
-  public distance: number = 12;
+  public distance: number = 24;
+  public distanceTooltip: string;
   public eventLength: number = 0;
   public income: number = 0;
+  public secondsIn21Days = 1814400;
+  public timeToEmpty = 0;
+  public timeToEmptyFormated = '';
+  public multiplier: number[] = [1,4,6,8];
 
   public progBarValue: number = 0;
   
@@ -59,18 +64,19 @@ export class ResourcesFieldsComponent implements OnInit {
   }
 
   calcValues() {
+    let fullFieldCycle = this.cycleInSeconds + this.distance;
     //need to add
     this.cyclesLeft = Math.round(this.mainService.getTimeLeftInSeconds('ValentinesDay') 
-    / (this.cycleInSeconds + this.distance));
+    / fullFieldCycle);
     if ((this.cyclesLeft - this.value) > 0) {
       this.needToAddValue = this.cyclesLeft - this.value;
     } else {
       this.needToAddValue = 0;
     }
-    //pud
-
+    //time to empty
+    this.getTimeToEmpty();
     //income
-    this.income = this.needToAddValue * this.resourceForm.get('fieldMultiplier')?.value;
+    this.income = Math.floor(this.secondsIn21Days / fullFieldCycle);
     //create object
     this.needToAddObject = {
       ID: this.fieldForm.ID,
@@ -80,6 +86,31 @@ export class ResourcesFieldsComponent implements OnInit {
     //emit
     this.needToAdd.emit(this.needToAddObject);
 
+  }
+
+  getTimeToEmpty() {
+    this.timeToEmpty = this.value * (this.cycleInSeconds + this.distance);
+    let hours = '' + Math.floor(this.timeToEmpty / 3600 % 24);
+    let days = Math.floor(this.timeToEmpty / 86400);
+    if (days === 0) {
+      this.timeToEmptyFormated = `${hours} ч.`;  
+    } else {
+      this.timeToEmptyFormated = `${days} дн. ${hours} ч.`;
+    }
+    return days;
+  }
+
+  getClassOfDistance(time:number): string {
+    if (time < 13) {
+      this.distanceTooltip = 'Идеально построенная ферма';
+      return 'green';
+    } else if (time >= 13 && time <= 40) {
+      this.distanceTooltip = 'Оптимальное расстояние до склада';
+      return 'yellow';
+    } else {
+      this.distanceTooltip = 'Стоит подумать о перестановке фермы поближе к складу';
+      return 'red';
+    }
   }
 
   // getProgBarValue() {

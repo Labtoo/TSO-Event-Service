@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaticContentComponent implements OnInit {
 
+  class: string = 'static-content';
+
   constructor() { }
 
   ngOnInit(): void {

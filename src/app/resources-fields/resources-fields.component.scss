@@ -1,3 +1,7 @@
+h4 {
+    margin: 0;
+}
+
 .resources-fields {
 
     &_container {
@@ -9,15 +13,20 @@
         background: #b8d7c3;
         border-radius: 10px;
         box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
-        //border-right: 3px solid #e2828e;
     }
 
     &_inputs {
         display: flex;
-        flex-direction: column;
     }
 
     &_farm-now {
+
+        padding-right: 15px;
+        
+        mat-form-field {
+            width: 80px;
+        }
+
         input {
             height: 30px;
             background: url(../../assets/images/ValentinesDay/flower.png) no-repeat scroll 1px 1px;
@@ -34,11 +43,66 @@
         }
     }
 
-    &_img {
+    &_plus-time {
         
-        img {
-            padding: 10px;
-            width: 200px;
+        mat-form-field {
+            width: 90px;
+        }
+
+        input {
+            height: 30px;
+            //background: url(../../assets/images/ValentinesDay/flower.png) no-repeat scroll 1px 1px;
+            padding-left: 30px;
+            // turn off arrows
+            -moz-appearance: textfield;
+        }
+
+        // turn off arrows
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     }
+
+    &_img {
+
+        h3 {
+            margin: 0;
+        }
+        
+        img {
+            padding-right: 10px;
+            width: 120px;
+        }
+    }
+
+    &_need-to-add {
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+
+        span {
+            padding: 4px 6px 3px 6px;
+            border-radius: 5px;
+            color: #efefef;
+            background-color: #424242;
+        }
+    }
+}
+
+// :host ::ng-deep .mat-form-field-flex {
+//     background-color: #0000001a;
+// }
+
+.green {
+    color: #006d00;
+}
+
+.yellow {
+    color: #3f3f3f;
+}
+
+.red {
+    color: #c40b04;
 }

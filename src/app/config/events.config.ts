@@ -8,8 +8,8 @@ export const EventList: IEventList[] = [
     },
     {
         EventName: "ValentinesDay",
-        Start: "01.19.2022 11:00",
-        End: "02.11.2022 17:20",
+        Start: "02.14.2022 11:00",
+        End: "03.07.2022 17:20",
         Fields: <IFields[]> [
             {
                 "ID": 1,

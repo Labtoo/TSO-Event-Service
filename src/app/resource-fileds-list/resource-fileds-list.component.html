@@ -1,12 +1,19 @@
-<section class="{{class}}_section">
-    <div class="{{class}}_container">
+<section class="section">
+    <div class="container">
         <div class="{{class}}_fields">
             <app-resources-fields [fieldForm]="Field"
                 *ngFor="let Field of fieldsArray"
                 (needToAdd)="takeOutput($event)">
             </app-resources-fields>
         </div>
-        <div class="{{class}}_overal-stats">
+        <div class="{{class}}_overal-wrapper">
+            <div class="{{class}}_overal">
+                <h3>Всего осталось добавить: </h3>
+                <img src="../../assets/images/ValentinesDay/addflower.png">
+                <span>{{overalNeedToAdd}}</span>
+            </div>
+        </div>
+        <!-- <div class="{{class}}_overal-stats">
             <h2>Итоговые результаты</h2>
             <form [formGroup]="overalForm">
                 <div>
@@ -36,6 +43,6 @@
                     {{overalNeedToAdd}}   
                 </div>
             </form>
-        </div>
+        </div> -->
     </div>
 </section>

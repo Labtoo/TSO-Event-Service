@@ -1,7 +1,19 @@
-h2 {
-    margin: 20px 50px;
-}
-p {
-    margin-left: 20px;
-}
+.static-content {
 
+    &_title {
+        display: flex;
+        justify-content: center;
+    }
+
+    &_info-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        justify-items: center;
+    }
+
+    &_info-item {
+        display: flex;
+        flex-flow: column;
+    }
+}

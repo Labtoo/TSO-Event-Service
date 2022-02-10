@@ -1,0 +1,9 @@
+.section {
+    display: block;
+    overflow-x: hidden;
+    margin-top: 25px;
+
+    @media (max-width: 900px) {
+        margin-top: 15px;
+    }
+}

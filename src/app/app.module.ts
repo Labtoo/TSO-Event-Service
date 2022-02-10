@@ -22,6 +22,7 @@ import { ResourcesFieldsComponent } from './resources-fields/resources-fields.co
 import { StaticContentComponent } from './static-content/static-content.component';
 import { ResourceFiledsListComponent } from './resource-fileds-list/resource-fileds-list.component';
 import { AdventuresListComponent } from './adventures-list/adventures-list.component';
+import { ExplorersListComponent } from './explorers-list/explorers-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdventuresListComponent } from './adventures-list/adventures-list.compo
     StaticContentComponent,
     CurrentTimeComponent,
     ResourceFiledsListComponent,
-    AdventuresListComponent
+    AdventuresListComponent,
+    ExplorersListComponent
   ],
   imports: [
     BrowserModule,

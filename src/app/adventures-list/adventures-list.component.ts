@@ -9,23 +9,17 @@ import {IEventType, IAdventure, IEventList, INeedToAdd} from '../system/interfac
   selector: 'app-adventures-list',
   templateUrl: './adventures-list.component.html',
   styleUrls: ['./adventures-list.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
 })
 export class AdventuresListComponent implements OnInit, AfterViewInit {
 
-  class: string = 'adventures-list';
+  class = 'adventures-list';
   overalNeedToAdd: number = 0;
-  isValentine: boolean = true;
+  isValentine: boolean = false;
   isPremium: boolean = false;
-  columnsHeader = ['icon', 'name', 'loot', 'needToFinish'];
+  columnsHeader = ['icon', 'name', 'loot', 'needToFinish', 'guide'];
   expandedElement: IAdventure | null;
   adventureList: IAdventure [];
+  headerText: string;
 
   buffForm = new FormGroup({
     valentine: new FormControl(this.isValentine),
@@ -36,16 +30,11 @@ export class AdventuresListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.mainService.overalNeedToAdd$.subscribe((val) => {
-      console.log(val);
       this.overalNeedToAdd = val;
       this.prepareTableData();
     });
     this.subscribeToFormChanges();
     this.calcValues();
-    console.log('before', this.overalNeedToAdd);
-    setTimeout(() => {
-      console.log('after', this.overalNeedToAdd);
-    }, 3000);
   }
 
   ngAfterViewInit(): void {
@@ -54,9 +43,9 @@ export class AdventuresListComponent implements OnInit, AfterViewInit {
 
   prepareTableData() {
     this.adventureList.forEach(element => {
-      element.needToFinish = '' + Math.floor(this.overalNeedToAdd / element.percent70) 
-        + '/' + Math.floor(this.overalNeedToAdd / element.percent30);
-      element.loot = '' + element.percent70 + '/' + element.percent30;
+      element.needToFinish = 'от ' + Math.floor(this.overalNeedToAdd / element.percent30) 
+        + ' до ' + Math.floor(this.overalNeedToAdd / element.percent70);
+      element.loot = '' + element.percent70 + ' / ' + element.percent30;
     });
   }
 
@@ -83,14 +72,14 @@ export class AdventuresListComponent implements OnInit, AfterViewInit {
     }
     if (!this.isValentine && this.isPremium) {
       this.adventureList.forEach(element => {
-        element.percent30 = Math.floor(element.percent30 * 1.5);
-        element.percent70 = Math.floor(element.percent70 * 1.5);
+        element.percent30 = Math.round(element.percent30 * 1.5);
+        element.percent70 = Math.round(element.percent70 * 1.5);
       });
     }
     if (this.isValentine && this.isPremium) {
       this.adventureList.forEach(element => {
-        element.percent30 = Math.floor(element.percent30 * 3 * 1.5);
-        element.percent70 = Math.floor(element.percent70 * 3 * 1.5);
+        element.percent30 = Math.round(element.percent30 * 3 * 1.5);
+        element.percent70 = Math.round(element.percent70 * 3 * 1.5);
       });
     }
   }

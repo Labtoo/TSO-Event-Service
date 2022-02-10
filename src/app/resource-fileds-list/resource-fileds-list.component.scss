@@ -1,26 +1,37 @@
 .resources-fields-list {
-    &_section {
-        display: flex;
-        width: 100%;
-        justify-content:center;
-    }
-
-    &_container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    
     &_fields {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        //justify-content: space-between;
+        justify-content:center;
     }
 
-    &_overal-stats {
-        padding: 10px;
-        background: #f8f8f8;
+    &_overal-wrapper {
+        display: flex;
+        justify-content: center;
     }
+
+    &_overal {
+
+        display: flex;
+        align-items: center;
+    
+        img {
+          margin: 5px;
+        }
+    
+        h3 {
+          margin: 0;
+          font-weight: 500;
+        }
+    
+        span {
+          padding: 4px 6px 3px 6px;
+          border-radius: 5px;
+          font-weight: 500;
+          color: #efefef;
+          background-color: #424242;
+        }
+      }
 
 }
